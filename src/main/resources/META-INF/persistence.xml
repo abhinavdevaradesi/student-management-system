@@ -24,10 +24,6 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
 
-            <!-- TURN OFF SQL LOGS -->
-            <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.format_sql" value="false"/>
-
             <!-- Reduce logging noise -->
             <property name="hibernate.generate_statistics" value="false"/>
         </properties>
