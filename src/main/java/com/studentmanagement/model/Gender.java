@@ -1,4 +1,4 @@
-package StudentManagementSystem.Model;
+package com.studentmanagement.model;
 
 public enum Gender {
     MALE, FEMALE, OTHER

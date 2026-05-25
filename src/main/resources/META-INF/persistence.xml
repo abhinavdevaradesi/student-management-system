@@ -8,24 +8,19 @@
     <persistence-unit name="StudentPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- Entities will be added here later -->
-        <class>StudentManagementSystem.Model.Student</class>
+        <!-- Only new classes -->
+        <class>com.studentmanagement.model.Student</class>
+        <class>com.studentmanagement.model.Gender</class>
 
         <properties>
-            <!-- Database Connection -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1"/>
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
 
-            <!-- Hibernate Settings -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-
-            <!-- Reduce logging noise -->
-            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

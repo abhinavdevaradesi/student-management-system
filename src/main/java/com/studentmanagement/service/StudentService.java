@@ -1,12 +1,11 @@
-package StudentManagementSystem.Service;
+package com.studentmanagement.service;
 
-import StudentManagementSystem.Model.Student;
+import com.studentmanagement.model.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 public class StudentService {

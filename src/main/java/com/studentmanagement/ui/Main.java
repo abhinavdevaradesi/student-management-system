@@ -1,8 +1,8 @@
-package StudentManagementSystem.Ui;
+package com.studentmanagement.ui;
 
-import StudentManagementSystem.Model.Gender;
-import StudentManagementSystem.Model.Student;
-import StudentManagementSystem.Service.StudentService;
+import com.studentmanagement.model.Gender;
+import com.studentmanagement.model.Student;
+import com.studentmanagement.service.StudentService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

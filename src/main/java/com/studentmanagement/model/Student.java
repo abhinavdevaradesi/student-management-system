@@ -1,4 +1,4 @@
-package StudentManagementSystem.Model;
+package com.studentmanagement.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
