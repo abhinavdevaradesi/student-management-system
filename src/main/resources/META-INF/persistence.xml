@@ -8,12 +8,13 @@
     <persistence-unit name="StudentPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- Only new classes -->
+        <!-- All Entity and Embeddable classes -->
         <class>com.studentmanagement.model.Student</class>
         <class>com.studentmanagement.model.Gender</class>
+        <class>com.studentmanagement.model.Department</class>
 
         <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:universitydb;DB_CLOSE_DELAY=-1"/>
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>

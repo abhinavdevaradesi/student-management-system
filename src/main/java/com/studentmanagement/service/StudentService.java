@@ -1,12 +1,8 @@
 package com.studentmanagement.service;
 
-import com.studentmanagement.model.Student;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-
+import jakarta.persistence.*;
 import java.util.List;
+import com.studentmanagement.model.Student;
 
 public class StudentService {
 
@@ -16,7 +12,7 @@ public class StudentService {
         emf = Persistence.createEntityManagerFactory("StudentPU");
     }
 
-    //creating student
+    //create student
     public void createStudent(Student student) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -28,13 +24,12 @@ public class StudentService {
         } catch (Exception e) {
             if(tx.isActive()) tx.rollback();
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
 
-    //find StudentByID
+    // find by ID
     public Student findStudent(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -44,17 +39,16 @@ public class StudentService {
         }
     }
 
-    //get AllStudents
+    // get all students
     public List<Student> getAllStudents() {
-        EntityManager em=emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("select s from Student s", Student.class).getResultList();
+            return em.createQuery("SELECT s FROM Student s", Student.class).getResultList();
         } finally {
             em.close();
         }
     }
-
-    //update Student
+    // update student
     public void updateStudent(Student student) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -64,21 +58,21 @@ public class StudentService {
             tx.commit();
             System.out.println("Student updated successfully!");
         } catch (Exception e) {
-            if(tx.isActive()) tx.rollback();
+            if (tx.isActive()) tx.rollback();
             e.printStackTrace();
         } finally {
             em.close();
         }
     }
 
-    //delete Student
+    // delete student
     public void deleteStudent(Long id) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
             Student student = em.find(Student.class, id);
-            if(student != null) {
+            if (student != null) {
                 em.remove(student);
                 tx.commit();
                 System.out.println("Student deleted successfully!");
@@ -86,18 +80,16 @@ public class StudentService {
                 System.out.println("Student not found!");
             }
         } catch (Exception e) {
-            if(tx.isActive()) tx.rollback();
+            if (tx.isActive()) tx.rollback();
             e.printStackTrace();
         } finally {
             em.close();
         }
     }
 
-    //close factory when application ends
     public void close() {
-        if(emf != null && emf.isOpen()) {
+        if (emf != null && emf.isOpen()) {
             emf.close();
         }
     }
-
 }
