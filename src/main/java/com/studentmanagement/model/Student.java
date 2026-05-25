@@ -22,21 +22,37 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Enumerated(EnumType.STRING)
+    private Department department;
+
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     @Column(name = "admission_date")
     private LocalDate admissionDate;
 
+    //embedded address
+    @Embedded
+    private Address address;
+
+    @Lob
+    @Column(name = "profile_photo")
+    private byte[] profilephoto;
+
+    @Transient
+    private String temporaryNote;
+
     public Student() {}
 
-    public Student(String name, String email, String phone, Gender gender, LocalDate dateOfBirth, LocalDate admissionDate) {
+    public Student(String name, String email, String phone, Gender gender,Department department, LocalDate dateOfBirth, LocalDate admissionDate, Address address) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.gender = gender;
+        this.department = department;
         this.dateOfBirth = dateOfBirth;
         this.admissionDate = admissionDate;
+        this.address=address;
     }
 
     // Getters and Setters
@@ -55,11 +71,23 @@ public class Student {
     public Gender getGender() { return gender; }
     public void setGender(Gender gender) { this.gender = gender; }
 
+    public Department getDepartment() { return department; }
+    public void setDepartment() { this.department = department; }
+
     public LocalDate getDateOfBirth() { return dateOfBirth; }
     public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
     public LocalDate getAdmissionDate() { return admissionDate; }
     public void setAdmissionDate(LocalDate admissionDate) { this.admissionDate = admissionDate; }
+
+    public Address getAddress() { return address; }
+    public void setAddress(Address address) { this.address = address; }
+
+    public byte[] getProfilephoto() { return profilephoto; }
+    public void setProfilephoto(byte[] profilephoto) { this.profilephoto = profilephoto; }
+
+    public String getTemporaryNote() { return temporaryNote; };
+    public void setTemporaryNote(String temporaryNote) { this.temporaryNote = temporaryNote; }
 
     @Override
     public String toString() {
@@ -68,6 +96,8 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
+                ", department=" + department +
+                ", address=" + address +
                 "}";
     }
 }
